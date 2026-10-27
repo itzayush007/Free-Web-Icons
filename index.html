@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVG Icons Vault | GitHub CDN & Web Showcase</title>
+  <meta name="description" content="Explore, preview and copy direct links for all SVG icons hosted on GitHub. Fast jsDelivr CDN, GitHub Pages & Raw URLs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --bg-card: #131b2e;
+      --bg-card-hover: #18223a;
+      --border: #23304b;
+      --border-accent: #3b82f6;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --primary-rgb: 59, 130, 246;
+      --accent: #06b6d4;
+      --success: #10b981;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --code-bg: #090d16;
+      --card-radius: 14px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f5f9;
+      --border: #e2e8f0;
+      --border-accent: #3b82f6;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --code-bg: #f1f5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    /* Ambient background gradient */
+    .bg-glow {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1000px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(6, 182, 212, 0.05) 45%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 24px 20px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+      color: white;
+    }
+
+    .brand-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .brand-text h1 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, var(--text), var(--text-muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-text p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 9px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+      box-shadow: 0 6px 18px rgba(59, 130, 246, 0.35);
+    }
+
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+
+    .repo-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: #60a5fa;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .repo-pill:hover {
+      background: rgba(59, 130, 246, 0.18);
+      border-color: #3b82f6;
+    }
+
+    /* Repo setup notice */
+    .notice-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 18px;
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.12), rgba(6, 182, 212, 0.08));
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: 12px;
+      font-size: 13px;
+    }
+
+    .notice-text {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Controls Bar */
+    .controls-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--card-radius);
+      padding: 18px 20px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .controls-row-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 11px 14px 11px 42px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--code-bg);
+      color: var(--text);
+      font-size: 14px;
+      font-family: var(--font);
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    .format-selector {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .format-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .format-tabs {
+      display: flex;
+      background: var(--code-bg);
+      padding: 3px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+    }
+
+    .format-tab {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .format-tab.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+    }
+
+    .controls-row-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .category-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn {
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .pill-btn:hover {
+      background: var(--bg-card-hover);
+      color: var(--text);
+    }
+
+    .pill-btn.active {
+      background: rgba(59, 130, 246, 0.15);
+      border-color: var(--primary);
+      color: #60a5fa;
+      font-weight: 600;
+    }
+
+    .stats-info {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .stats-info b {
+      color: var(--text);
+    }
+
+    /* Icons Grid */
+    .icons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 20px;
+    }
+
+    /* Icon Card */
+    .icon-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--card-radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .icon-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(59, 130, 246, 0.4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .icon-preview-box {
+      width: 100%;
+      height: 110px;
+      border-radius: 10px;
+      background-color: var(--code-bg);
+      background-image: 
+        linear-gradient(45deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.04) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.04) 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: var(--transition);
+    }
+
+    .icon-preview-box:hover {
+      background-color: rgba(59, 130, 246, 0.05);
+    }
+
+    .icon-preview-box img,
+    .icon-preview-box svg {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+    }
+
+    .icon-preview-box:hover img,
+    .icon-preview-box:hover svg {
+      transform: scale(1.15);
+    }
+
+    .icon-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .icon-meta h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 180px;
+    }
+
+    .icon-meta p {
+      font-size: 12px;
+      font-family: var(--mono);
+      color: var(--text-muted);
+    }
+
+    .icon-tag {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.1);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    /* Link URL bar */
+    .link-container {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .link-caption {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .link-box {
+      display: flex;
+      align-items: center;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 8px 6px 12px;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .link-box:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+    }
+
+    .link-input {
+      flex: 1;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      outline: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      user-select: all;
+    }
+
+    .link-copy-icon-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      border-radius: 5px;
+      transition: var(--transition);
+    }
+
+    .link-copy-icon-btn:hover {
+      color: var(--primary);
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    /* Card Actions */
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .copy-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .copy-btn:hover {
+      background: rgba(59, 130, 246, 0.15);
+      border-color: var(--primary);
+      color: #93c5fd;
+    }
+
+    .copy-btn.btn-primary-action {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .copy-btn.btn-primary-action:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+    }
+
+    .copy-btn.copied {
+      background: var(--success) !important;
+      border-color: var(--success) !important;
+      color: #fff !important;
+    }
+
+    /* Empty state */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      background: var(--bg-card);
+      border: 1px dashed var(--border);
+      border-radius: var(--card-radius);
+    }
+
+    .empty-state svg {
+      width: 48px;
+      height: 48px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      max-width: 580px;
+      width: 100%;
+      padding: 28px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      position: relative;
+      animation: modalIn 0.25s ease-out;
+    }
+
+    @keyframes modalIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .modal-header h2 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 20px;
+      padding: 4px;
+    }
+
+    .modal-close:hover {
+      color: var(--text);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--code-bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .form-group input:focus {
+      border-color: var(--primary);
+    }
+
+    .form-hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      border: 1px solid var(--success);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      z-index: 2000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Guide & Documentation section */
+    .guide-section {
+      margin-top: 50px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--card-radius);
+      padding: 28px;
+    }
+
+    .guide-section h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .guide-card {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .guide-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .guide-card p, .guide-card li {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .guide-card code {
+      font-family: var(--mono);
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #93c5fd;
+    }
+
+    /* Modal for Detailed Icon Preview */
+    .preview-modal-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      padding-top: 10px;
+    }
+
+    .preview-stage {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      background-color: var(--code-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .preview-stage img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    .size-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .code-snippet {
+      width: 100%;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: #93c5fd;
+      position: relative;
+      overflow-x: auto;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 16px 14px 60px;
+      }
+      .controls-row-top {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .format-tabs {
+        overflow-x: auto;
+      }
+      .icons-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="header-top">
+        <div class="brand">
+          <div class="brand-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1>SVG Icons Vault</h1>
+            <p>GitHub Hosted Icons & Fast CDN Direct Links for all your projects</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button class="repo-pill" id="repoConfigBtn" title="GitHub Repo Setup">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+            <span id="repoNameLabel">GitHub Repo Setup</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+          </button>
+
+          <button class="btn btn-sm" id="syncGithubBtn" title="Live sync new SVGs from GitHub repository">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+            </svg>
+            <span>Auto Sync</span>
+          </button>
+
+          <button class="btn btn-sm" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+            🌓 Theme
+          </button>
+        </div>
+      </div>
+
+      <!-- Config Notice Banner -->
+      <div class="notice-bar" id="noticeBar">
+        <div class="notice-text">
+          <span>💡</span>
+          <span id="noticeMessage"><b>Auto-Detection Ready:</b> When you push new <code>.svg</code> files to GitHub, this page automatically lists them with instant copy links!</span>
+        </div>
+        <button class="btn btn-sm btn-primary" id="openSettingsNoticeBtn">Configure Repo</button>
+      </div>
+    </header>
+
+    <!-- Controls Panel -->
+    <div class="controls-panel">
+      <div class="controls-row-top">
+        <div class="search-box">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search icons (e.g. discord, instagram, qr, settings)..." autocomplete="off">
+        </div>
+
+        <div class="format-selector">
+          <span class="format-label">Default Link Type:</span>
+          <div class="format-tabs">
+            <button class="format-tab active" data-format="jsdelivr">🚀 jsDelivr CDN</button>
+            <button class="format-tab" data-format="pages">🌐 GitHub Pages</button>
+            <button class="format-tab" data-format="raw">📦 GitHub Raw</button>
+            <button class="format-tab" data-format="img">🏷️ HTML &lt;img&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-row-bottom">
+        <div class="category-pills" id="categoryPills">
+          <button class="pill-btn active" data-category="all">All Icons</button>
+          <button class="pill-btn" data-category="Social">Social</button>
+          <button class="pill-btn" data-category="Scanner & QR">Scanner & QR</button>
+          <button class="pill-btn" data-category="System">System</button>
+          <button class="pill-btn" data-category="General">General</button>
+        </div>
+
+        <div class="stats-info">
+          Showing <b id="visibleCount">0</b> of <b id="totalCount">0</b> icons
+        </div>
+      </div>
+    </div>
+
+    <!-- Icons Grid -->
+    <div class="icons-grid" id="iconsGrid">
+      <!-- Icons dynamically injected here -->
+    </div>
+
+    <!-- How to Use & Documentation Guide -->
+    <section class="guide-section">
+      <h2>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--primary);">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 16v-4"></path>
+          <path d="M12 8h.01"></path>
+        </svg>
+        Icon Hub Guide: Naye Icons Kaise Add Karein & Kahin Bhi Kaise Use Karein?
+      </h2>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <h3>1. 🚀 GitHub Par Upload Karna</h3>
+          <p>Apne project ko GitHub repository me push karein. GitHub Pages enable karne ke liye:</p>
+          <ol style="margin-left: 18px; margin-top: 6px;">
+            <li>GitHub Repo me <b>Settings</b> &rarr; <b>Pages</b> me jayein.</li>
+            <li>Branch me <b>main</b> / <b>master</b> select karke <b>Save</b> karein.</li>
+          </ol>
+        </div>
+
+        <div class="guide-card">
+          <h3>2. 🔄 Naye SVGs Auto-Add Hona</h3>
+          <p>Aane wale samay me jab bhi aap naye <code>.svg</code> files is folder me add karenge:</p>
+          <ul style="margin-left: 18px; margin-top: 6px;">
+            <li>GitHub par commit karte hi <b>GitHub Action</b> automatically <code>icons.json</code> update kar dega!</li>
+            <li>Aap is page par <b>"Auto Sync"</b> button daba kar GitHub se turant live icons fetch kar sakte hain!</li>
+            <li>Offline/Local testing ke liye <code>update-icons.bat</code> par double-click karein.</li>
+          </ul>
+        </div>
+
+        <div class="guide-card">
+          <h3>3. 💻 Projects me Link Use Karna</h3>
+          <p>Kisi bhi website ya app me icon direct lagane ke liye <b>Copy Link</b> ya <b>Copy &lt;img&gt;</b> button dabayein:</p>
+          <pre class="code-snippet" style="margin-top: 8px;">&lt;img src="https://cdn.jsdelivr.net/gh/USERNAME/REPO@main/discord1.svg" width="24" height="24" /&gt;</pre>
+          <p style="margin-top: 6px;"><b>jsDelivr CDN</b> sabse best hai kyunki ye ultra-fast hai aur kabhi block nahi hota!</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal-backdrop" id="settingsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>GitHub Repository Settings</h2>
+        <button class="modal-close" id="closeSettingsModal">&times;</button>
+      </div>
+      <form id="settingsForm">
+        <div class="form-group">
+          <label for="ghUsername">GitHub Username / Organization</label>
+          <input type="text" id="ghUsername" placeholder="e.g. your-github-username" required>
+          <p class="form-hint">Aapka GitHub username jahan icons ka repo create hai.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="ghRepo">Repository Name</label>
+          <input type="text" id="ghRepo" placeholder="e.g. web-icons or Web-Icons" required>
+          <p class="form-hint">Is project ke repository ka naam.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="ghBranch">Default Branch</label>
+          <input type="text" id="ghBranch" value="main" required>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px;">
+          <button type="button" class="btn" id="cancelSettingsBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Detailed Preview Modal -->
+  <div class="modal-backdrop" id="previewModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalIconTitle">Icon Details</h2>
+        <button class="modal-close" id="closePreviewModal">&times;</button>
+      </div>
+      <div class="preview-modal-body">
+        <div class="preview-stage" id="previewStage">
+          <img id="modalIconImage" src="" alt="Icon Preview">
+        </div>
+
+        <div class="size-buttons">
+          <button class="btn btn-sm" onclick="changePreviewSize(24)">24px</button>
+          <button class="btn btn-sm" onclick="changePreviewSize(32)">32px</button>
+          <button class="btn btn-sm" onclick="changePreviewSize(48)">48px</button>
+          <button class="btn btn-sm btn-primary" onclick="changePreviewSize(64)">64px</button>
+          <button class="btn btn-sm" onclick="changePreviewSize(96)">96px</button>
+        </div>
+
+        <div style="width: 100%;">
+          <label class="form-hint" style="margin-bottom: 4px; display: block;">Direct CDN Link:</label>
+          <div class="code-snippet" id="modalSnippetCDN"></div>
+        </div>
+
+        <div style="width: 100%;">
+          <label class="form-hint" style="margin-bottom: 4px; display: block;">HTML Embed Snippet:</label>
+          <div class="code-snippet" id="modalSnippetHTML"></div>
+        </div>
+
+        <div style="width: 100%; display: flex; gap: 10px;">
+          <button class="btn btn-primary" id="modalCopyBtn" style="flex: 1; justify-content: center;">Copy Link</button>
+          <a id="modalDownloadBtn" download class="btn" style="flex: 1; justify-content: center;">Download SVG</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Element -->
+  <div class="toast" id="toast">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--success)">
+      <path d="M20 6L9 17l-5-5"/>
+    </svg>
+    <span id="toastMessage">Link copied to clipboard!</span>
+  </div>
+
+  <script>
+    // Initial Fallback Icons (instant offline support)
+    const initialIcons = [
+      { filename: "discord1.svg", name: "Discord 1", category: "Social", size: "1.22 KB" },
+      { filename: "github1.svg", name: "Github 1", category: "Social", size: "3.70 KB" },
+      { filename: "instagram1.svg", name: "Instagram 1", category: "Social", size: "1.01 KB" },
+      { filename: "linkedin1.svg", name: "Linkedin 1", category: "Social", size: "0.98 KB" },
+      { filename: "scan-qr1.svg", name: "Scan Qr 1", category: "Scanner & QR", size: "0.57 KB" },
+      { filename: "scanQR2.svg", name: "Scan QR 2", category: "Scanner & QR", size: "1.99 KB" },
+      { filename: "settings1.svg", name: "Settings 1", category: "System", size: "1.13 KB" },
+      { filename: "telegram-svgrepo-com.svg", name: "Telegram", category: "Social", size: "1.26 KB" },
+      { filename: "twitter1.svg", name: "Twitter 1", category: "Social", size: "0.99 KB" },
+      { filename: "youtube1.svg", name: "Youtube 1", category: "Social", size: "0.61 KB" }
+    ];
+
+    // State
+    let iconsList = [...initialIcons];
+    let activeCategory = 'all';
+    let searchQuery = '';
+    let activeFormat = 'jsdelivr'; // 'jsdelivr', 'pages', 'raw', 'img'
+
+    // Repository Config Detection
+    let config = {
+      username: localStorage.getItem('svg_hub_username') || '',
+      repo: localStorage.getItem('svg_hub_repo') || '',
+      branch: localStorage.getItem('svg_hub_branch') || 'main'
+    };
+
+    // Auto-detect if hosted on GitHub Pages: username.github.io/repo-name/
+    if (!config.username || !config.repo) {
+      const hostname = window.location.hostname;
+      if (hostname.endsWith('.github.io')) {
+        config.username = hostname.replace('.github.io', '');
+        const pathParts = window.location.pathname.split('/').filter(Boolean);
+        if (pathParts.length > 0) {
+          config.repo = pathParts[0];
+          localStorage.setItem('svg_hub_username', config.username);
+          localStorage.setItem('svg_hub_repo', config.repo);
+        }
+      }
+    }
+
+    // DOM Elements
+    const iconsGrid = document.getElementById('iconsGrid');
+    const searchInput = document.getElementById('searchInput');
+    const categoryPills = document.getElementById('categoryPills');
+    const formatTabs = document.querySelectorAll('.format-tab');
+    const totalCountEl = document.getElementById('totalCount');
+    const visibleCountEl = document.getElementById('visibleCount');
+    const repoConfigBtn = document.getElementById('repoConfigBtn');
+    const repoNameLabel = document.getElementById('repoNameLabel');
+    const noticeBar = document.getElementById('noticeBar');
+    const noticeMessage = document.getElementById('noticeMessage');
+    const openSettingsNoticeBtn = document.getElementById('openSettingsNoticeBtn');
+    const syncGithubBtn = document.getElementById('syncGithubBtn');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+
+    // Settings Modal
+    const settingsModal = document.getElementById('settingsModal');
+    const settingsForm = document.getElementById('settingsForm');
+    const ghUsernameInput = document.getElementById('ghUsername');
+    const ghRepoInput = document.getElementById('ghRepo');
+    const ghBranchInput = document.getElementById('ghBranch');
+    const closeSettingsModal = document.getElementById('closeSettingsModal');
+    const cancelSettingsBtn = document.getElementById('cancelSettingsBtn');
+
+    // Preview Modal
+    const previewModal = document.getElementById('previewModal');
+    const closePreviewModal = document.getElementById('closePreviewModal');
+    const modalIconTitle = document.getElementById('modalIconTitle');
+    const modalIconImage = document.getElementById('modalIconImage');
+    const modalSnippetCDN = document.getElementById('modalSnippetCDN');
+    const modalSnippetHTML = document.getElementById('modalSnippetHTML');
+    const modalCopyBtn = document.getElementById('modalCopyBtn');
+    const modalDownloadBtn = document.getElementById('modalDownloadBtn');
+
+    // Helpers to build icon URLs
+    function getIconUrl(filename, format = activeFormat) {
+      const user = config.username || 'YOUR_USERNAME';
+      const repo = config.repo || 'YOUR_REPO';
+      const branch = config.branch || 'main';
+
+      switch (format) {
+        case 'jsdelivr':
+          return `https://cdn.jsdelivr.net/gh/${user}/${repo}@${branch}/${filename}`;
+        case 'pages':
+          return `https://${user}.github.io/${repo}/${filename}`;
+        case 'raw':
+          return `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${filename}`;
+        case 'img':
+          const cdn = `https://cdn.jsdelivr.net/gh/${user}/${repo}@${branch}/${filename}`;
+          return `<img src="${cdn}" alt="${filename.replace('.svg', '')}" width="24" height="24" />`;
+        default:
+          return `./${filename}`;
+      }
+    }
+
+    // Update Repo UI status
+    function updateRepoHeader() {
+      if (config.username && config.repo) {
+        repoNameLabel.textContent = `${config.username}/${config.repo}`;
+        noticeBar.style.display = 'none';
+      } else {
+        repoNameLabel.textContent = 'Set GitHub Repo';
+        noticeBar.style.display = 'flex';
+        noticeMessage.innerHTML = '⚠️ <b>Setup required:</b> Click <b>Configure Repo</b> to enter your GitHub Username &amp; Repo name for direct links!';
+      }
+    }
+
+    // Render Icons
+    function renderIcons() {
+      const filtered = iconsList.filter(icon => {
+        const matchesCategory = (activeCategory === 'all') || (icon.category === activeCategory);
+        const q = searchQuery.toLowerCase().trim();
+        const matchesSearch = !q || 
+          icon.name.toLowerCase().includes(q) || 
+          icon.filename.toLowerCase().includes(q) ||
+          (icon.category && icon.category.toLowerCase().includes(q));
+        return matchesCategory && matchesSearch;
+      });
+
+      totalCountEl.textContent = iconsList.length;
+      visibleCountEl.textContent = filtered.length;
+
+      if (filtered.length === 0) {
+        iconsGrid.innerHTML = `
+          <div class="empty-state">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h3>Koi Icon Nahi Mila</h3>
+            <p style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">Search query change karein ya dusra category select karein.</p>
+          </div>
+        `;
+        return;
+      }
+
+      iconsGrid.innerHTML = filtered.map(icon => {
+        const url = getIconUrl(icon.filename, activeFormat);
+        const cdnUrl = getIconUrl(icon.filename, 'jsdelivr');
+
+        return `
+          <div class="icon-card" data-filename="${icon.filename}">
+            <div class="icon-header">
+              <div class="icon-meta">
+                <h3 title="${icon.name}">${icon.name}</h3>
+                <p>${icon.filename}</p>
+              </div>
+              <span class="icon-tag">${icon.category || 'SVG'}</span>
+            </div>
+
+            <div class="icon-preview-box" onclick="openPreview('${icon.filename}', '${icon.name}')" title="Click to view details &amp; different sizes">
+              <img src="./${icon.filename}" alt="${icon.name}" onerror="this.onerror=null; this.src='${cdnUrl}'">
+            </div>
+
+            <div class="link-container">
+              <div class="link-caption">
+                <span>${activeFormat.toUpperCase()} Link</span>
+                <span>${icon.size || ''}</span>
+              </div>
+              <div class="link-box">
+                <input type="text" class="link-input" readonly value="${url.replace(/"/g, '&quot;')}" onclick="this.select()">
+                <button class="link-copy-icon-btn" onclick="copyText('${encodeURIComponent(url)}', this)" title="Copy link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-actions">
+              <button class="copy-btn btn-primary-action" onclick="copyText('${encodeURIComponent(url)}', this)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>Copy Link</span>
+              </button>
+              <button class="copy-btn" onclick="copyHtmlSnippet('${icon.filename}', '${icon.name}', this)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                <span>Copy &lt;img&gt;</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Copy to clipboard helper
+    window.copyText = function(encodedText, btnEl) {
+      const text = decodeURIComponent(encodedText);
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Link copied to clipboard!');
+        if (btnEl) {
+          const originalHTML = btnEl.innerHTML;
+          btnEl.classList.add('copied');
+          btnEl.innerHTML = `✓ Copied!`;
+          setTimeout(() => {
+            btnEl.classList.remove('copied');
+            btnEl.innerHTML = originalHTML;
+          }, 1500);
+        }
+      }).catch(err => {
+        // Fallback for older browsers
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showToast('Link copied!');
+      });
+    };
+
+    window.copyHtmlSnippet = function(filename, name, btnEl) {
+      const snippet = `<img src="${getIconUrl(filename, 'jsdelivr')}" alt="${name}" width="24" height="24" />`;
+      window.copyText(encodeURIComponent(snippet), btnEl);
+    };
+
+    function showToast(message) {
+      toastMessage.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2200);
+    }
+
+    // Preview Modal Logic
+    let currentModalIcon = null;
+    window.openPreview = function(filename, name) {
+      currentModalIcon = filename;
+      modalIconTitle.textContent = name;
+      modalIconImage.src = `./${filename}`;
+      modalIconImage.style.width = '64px';
+      modalIconImage.style.height = '64px';
+
+      const cdnUrl = getIconUrl(filename, 'jsdelivr');
+      const imgTag = `<img src="${cdnUrl}" alt="${name}" width="32" height="32" />`;
+
+      modalSnippetCDN.textContent = cdnUrl;
+      modalSnippetHTML.textContent = imgTag;
+
+      modalCopyBtn.onclick = function() {
+        window.copyText(encodeURIComponent(cdnUrl), modalCopyBtn);
+      };
+
+      modalDownloadBtn.href = `./${filename}`;
+      modalDownloadBtn.setAttribute('download', filename);
+
+      previewModal.classList.add('open');
+    };
+
+    window.changePreviewSize = function(size) {
+      modalIconImage.style.width = size + 'px';
+      modalIconImage.style.height = size + 'px';
+    };
+
+    closePreviewModal.onclick = () => previewModal.classList.remove('open');
+
+    // Load from icons.json
+    async function loadIconsJson() {
+      try {
+        const res = await fetch('./icons.json?t=' + Date.now());
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            iconsList = data;
+            renderIcons();
+          }
+        }
+      } catch (err) {
+        console.log('Using embedded icon list (local preview)');
+        renderIcons();
+      }
+    }
+
+    // Auto-detect & Fetch all .svg directly from GitHub Contents API
+    async function syncWithGitHub() {
+      if (!config.username || !config.repo) {
+        showToast('Pehle GitHub Username aur Repo set karein!');
+        openSettings();
+        return;
+      }
+
+      showToast('GitHub se live icons fetch ho rahe hain...');
+      syncGithubBtn.disabled = true;
+      syncGithubBtn.querySelector('span').textContent = 'Syncing...';
+
+      try {
+        const apiUrl = `https://api.github.com/repos/${config.username}/${config.repo}/contents/`;
+        const res = await fetch(apiUrl);
+        if (!res.ok) {
+          throw new Error('Repo not found or API rate limited');
+        }
+        const contents = await res.json();
+        const svgFiles = contents.filter(item => item.type === 'file' && item.name.toLowerCase().endsWith('.svg'));
+
+        if (svgFiles.length > 0) {
+          // Merge with current list to avoid losing category tags
+          const existingMap = new Map(iconsList.map(i => [i.filename, i]));
+          
+          svgFiles.forEach(item => {
+            if (!existingMap.has(item.name)) {
+              let cleanName = item.name.replace(/\.svg$/i, '')
+                .replace(/[-_]+/g, ' ')
+                .replace(/([a-zA-Z])(\d+)/g, '$1 $2')
+                .replace(/\b\w/g, c => c.toUpperCase());
+
+              existingMap.set(item.name, {
+                filename: item.name,
+                name: cleanName,
+                size: (item.size / 1024).toFixed(2) + ' KB',
+                category: 'General'
+              });
+            }
+          });
+
+          iconsList = Array.from(existingMap.values());
+          renderIcons();
+          showToast(`✓ Sync ho gaya! Total ${iconsList.length} icons mile!`);
+        } else {
+          showToast('Koi .svg file nahi mili repository me.');
+        }
+      } catch (err) {
+        console.error(err);
+        showToast('⚠️ GitHub sync fail: ' + err.message);
+      } finally {
+        syncGithubBtn.disabled = false;
+        syncGithubBtn.querySelector('span').textContent = 'Auto Sync';
+      }
+    }
+
+    // Event Listeners
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderIcons();
+    });
+
+    categoryPills.addEventListener('click', (e) => {
+      if (e.target.classList.contains('pill-btn')) {
+        categoryPills.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        activeCategory = e.target.dataset.category;
+        renderIcons();
+      }
+    });
+
+    formatTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        formatTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        activeFormat = tab.dataset.format;
+        renderIcons();
+      });
+    });
+
+    // Settings Modal handlers
+    function openSettings() {
+      ghUsernameInput.value = config.username;
+      ghRepoInput.value = config.repo;
+      ghBranchInput.value = config.branch;
+      settingsModal.classList.add('open');
+    }
+
+    repoConfigBtn.onclick = openSettings;
+    openSettingsNoticeBtn.onclick = openSettings;
+    closeSettingsModal.onclick = () => settingsModal.classList.remove('open');
+    cancelSettingsBtn.onclick = () => settingsModal.classList.remove('open');
+
+    settingsForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      config.username = ghUsernameInput.value.trim();
+      config.repo = ghRepoInput.value.trim();
+      config.branch = ghBranchInput.value.trim() || 'main';
+
+      localStorage.setItem('svg_hub_username', config.username);
+      localStorage.setItem('svg_hub_repo', config.repo);
+      localStorage.setItem('svg_hub_branch', config.branch);
+
+      settingsModal.classList.remove('open');
+      updateRepoHeader();
+      renderIcons();
+      showToast('Repository Settings Saved!');
+
+      // Try automatic sync
+      syncWithGitHub();
+    });
+
+    syncGithubBtn.onclick = syncWithGitHub;
+
+    // Theme Toggle
+    const themeBtn = document.getElementById('themeToggleBtn');
+    let currentTheme = localStorage.getItem('svg_theme') || 'dark';
+    document.body.setAttribute('data-theme', currentTheme);
+
+    themeBtn.onclick = () => {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.body.setAttribute('data-theme', currentTheme);
+      localStorage.setItem('svg_theme', currentTheme);
+    };
+
+    // Close modals on clicking backdrop
+    window.onclick = function(e) {
+      if (e.target === settingsModal) settingsModal.classList.remove('open');
+      if (e.target === previewModal) previewModal.classList.remove('open');
+    };
+
+    // Initialize
+    updateRepoHeader();
+    renderIcons();
+    loadIconsJson();
+
+    // If username and repo are already known (e.g. from GitHub pages hostname), auto sync
+    if (config.username && config.repo) {
+      syncWithGitHub();
+    }
+  </script>
+</body>
+</html>

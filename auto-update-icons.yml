@@ -1,0 +1,41 @@
+name: Auto Update Icons Manifest
+
+on:
+  push:
+    paths:
+      - '**.svg'
+      - 'generate-icons.js'
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-icons:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Regenerate icons.json
+        run: node generate-icons.js
+
+      - name: Commit & Push Changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          if [[ -n $(git status -s icons.json) ]]; then
+            git add icons.json
+            git commit -m "Auto-update icons.json manifest [skip ci]"
+            git push
+          else
+            echo "No changes in icons.json"
+          fi
